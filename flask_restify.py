@@ -106,9 +106,12 @@ class RESTify(object):
             for mimetype in mimetypes:
                 handler = restifiers.get(mimetype)
                 if handler is not None:
-                    return handler(_entity, _name, **_kw)
-        else:
-            return _entity if _default is None else _default
+                    result = handler(_entity, _name, **_kw)
+                    if result is not _cls.CONTINUE:
+                        return result
+        return _entity if _default is None else _default
+
+    CONTINUE = 'CONTINUE'
 
 restify = RESTify.restify
 
