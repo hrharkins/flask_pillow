@@ -1,4 +1,4 @@
-flask_resitfy
+flask_restify
 =============
 
 Accept-sensitive translation wrapper for Flask views.
