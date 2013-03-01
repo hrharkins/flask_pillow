@@ -6,7 +6,7 @@ Accept-sensitive translation wrapper for Flask views.
 Simple Example
 ==============
 
-    from flask_resitfy import restify
+    from flask_restify import restify
 
     @app.route('/somewhere')
     def view():
