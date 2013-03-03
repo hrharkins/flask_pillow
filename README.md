@@ -3,6 +3,17 @@ flask_restify
 
 Accept-sensitive translation wrapper for Flask views.
 
+Why?
+====
+
+Have you had instances where you wanted to adjust your representation
+based on the requested content type?  Typically, in Flask this amounts to
+an if-wrapper around the various representation generators.  However,
+in most cases this is largely boilerplate.  Ideeally, the controller
+function would return an entity and serializers would convert that to a
+string form (see RESTlet and Catalyst::Controller::REST for examples from
+other languages).
+
 Simple Example
 ==============
 
@@ -26,14 +37,17 @@ Automatic Rendering
 
 The response provided is derived from the following sources:
 
- 1. The content-type query argument
+ 1. The "content-type" query argument in the request URL OR POST data.
  1. The types available in the accept header, in order of specified priority
 
-The first one available wins and has a restifarian function call upon it.  There are a few of these functions
-configured by default, each of which can be disabled if desired by passing *thing*=False to RESTify(app, ...)
+The first one available that has an associated restifarian function call
+upon it.  There are a few of these functions configured by default, each of
+which can be disabled if desired by passing *thing*=False to RESTify(app,
+...)
 
- * html -- text/html -- If html_template is provided, it is used in render_template (by file),
-    or if html_template_source is provided it is used in render_template_string.
+ * html -- text/html -- If html_template is provided, it is used in 
+    render_template (by file), or if html_template_source is provided it 
+    is used in render_template_string.
  * json -- application/json, text/json
 
 Custom restifarians
