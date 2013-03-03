@@ -11,6 +11,11 @@ module aims to remove that boilerplate by allowing view functions to simply
 return a generic entity and letting restify() figure out what sort of
 conversion function to call based on the Accept header.
 
+Install
+=======
+
+pip install https://github.com/hrharkins/flask_restify/archive/v0.9beta.zip
+
 Simple Example
 ==============
 
@@ -26,7 +31,7 @@ In the view code:
 
     @app.route('/somewhere')
     def view():
-        data = get_model_data()
+        data = get_model_data()     # Ideally translated into dictionaries.
         return restify(data, html_template='view.html')
 
 Automatic Rendering
