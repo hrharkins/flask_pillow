@@ -53,7 +53,12 @@ which can be disabled if desired by passing *thing*=False to RESTify(app,
 Custom restifarians
 ===================
 
-    @RESTify.restifarian('x-application/url-list', src='?')
+Applications can define their own handler functions by applying the
+@RESTify().restifarian decorator:
+
+    REST = RESTify(app)
+
+    @REST.restifarian('x-application/url-list', src='?')
     def to_url_list(src):
         if isinstance(src, (tuple, list, set)):
             return '\n'.join(src)
