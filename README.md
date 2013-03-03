@@ -67,7 +67,8 @@ Applications can define their own handler functions by applying the
 
 A few special cases exist.  To accept all keyword arguments, assign '*' to
 one of the variables.  To apply a dictionary as keyword arguments, use the
-special destination '__kw__':
+special destination '__kw__'.  To assign the entity to a variable, set '?'
+to the variable:
 
     @REST.restifarian('text/xml', entity='?', 
                       template='xml_template', source='xml_source', __kw__='*')

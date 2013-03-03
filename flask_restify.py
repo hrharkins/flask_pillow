@@ -25,22 +25,15 @@ class RESTify(object):
         config.update(self.handlers)
         default_setup = not bool(self.auto_setup)
         if self.auto_setup.get('html', default_setup):
-            @self.restifarian('text/html', '.html',
+            self.restifarian(templatize, 'text/html', '.html',
                               _template='html_template',
                               _source='html_source',
                               _entity='?',
                               __kw__='*')
-            def to_html(_entity, _template=None, _source=None, **_kw):
-                if _template is not None:
-                    return flask.render_template(_template, **_kw)
-                elif _source is not None:
-                    return flask.render_template_string(_source, **_kw)
-                else:
-                    return _entity
         if self.auto_setup.get('json', default_setup):
-            @self.restifarian('text/json', 'application/json', '.json', obj='?')
-            def to_json(obj):
-                return json.dumps(obj)
+            self.restifarian(json.dumps,
+                             'text/json', 'application/json', 
+                             obj='?')
 
     def teardown(self, exception):
         ctx = stack.top
@@ -187,4 +180,12 @@ def make_translator(_fn, *_args, **_xlate):
     l = dict(_fn=_fn)
     exec '\n'.join(fn_src) in l
     return l[_fn.__name__]
+
+def templatize(_entity, _template=None, _source=None, **_kw):
+    if _template is not None:
+        return flask.render_template(_template, **_kw)
+    elif _source is not None:
+        return flask.render_template_string(_source, **_kw)
+    else:
+        return _entity
 
