@@ -65,3 +65,17 @@ Applications can define their own handler functions by applying the
         else:
             return RESTify.CONTINUE
 
+A few special cases exist.  To accept all keyword arguments, assign '*' to
+one of the variables.  To apply a dictionary as keyword arguments, use the
+special destination '__kw__':
+
+    @REST.restifarian('text/xml', entity='?', 
+                      template='xml_template', source='xml_source', __kw__='*')
+    def to_xml(_entity, _template=None, _source=None, **_kw):
+        if _template:
+            return render_template(_template, **_kw)
+        elif _source:
+            return render_template_string(_source, **_kw)
+        else:
+            return entity
+

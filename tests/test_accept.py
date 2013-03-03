@@ -8,8 +8,8 @@ class TestingBase(object):
         app.debug = True
         @app.route('/test1')
         def test1():
-            return rest.restify({'who': 'world'}, 'rest', 'NOT TRANSLATED',
-                                html_template_source='Hello, {{ rest.who }}')
+            return rest.restify({'who': 'world'}, 'rest',
+                                html_source='Hello, {{ rest.who }}')
 
 class TestAccept(TestingBase, unittest.TestCase):
     def test_accept(self):
