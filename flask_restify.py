@@ -25,15 +25,26 @@ class RESTify(object):
         config.update(self.handlers)
         default_setup = not bool(self.auto_setup)
         if self.auto_setup.get('html', default_setup):
-            self.restifarian(templatize, 'text/html', '.html',
+            self.restifarian(templatize, 'text/html',
                               _template='html_template',
                               _source='html_source',
                               _entity='?',
                               __kw__='*')
+        if self.auto_setup.get('xml', default_setup):
+            self.restifarian(templatize, 'text/xml',
+                              _template='xml_template',
+                              _source='xml_source',
+                              _entity='?',
+                              __kw__='*')
         if self.auto_setup.get('json', default_setup):
             self.restifarian(json.dumps,
-                             'text/json', 'application/json', 
+                             'text/json', 'application/json',
                              obj='?')
+        if self.auto_setup.get('yaml', False):
+            import yaml
+            self.restifarian(yaml.dump,
+                             'text/yaml', 'application/yaml',
+                             data='?')
 
     def teardown(self, exception):
         ctx = stack.top

@@ -46,9 +46,12 @@ which can be disabled if desired by passing *thing*=False to RESTify(app,
 ...)
 
  * html -- text/html -- If html_template is provided, it is used in 
-    render_template (by file), or if html_template_source is provided it 
+    render_template (by file), or if html_soruce is provided it 
     is used in render_template_string.
+ * xml -- text/xml -- similar to html, except uses xml_template/xml_source
+    instead of the html counterparts.
  * json -- application/json, text/json
+ * yaml -- application/yaml, text/yaml -- requries the yaml library.
 
 Custom restifarians
 ===================
