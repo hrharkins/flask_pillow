@@ -9,7 +9,7 @@ from setuptools import setup
 setup(
     name='Flask-RESTify',
     version='0.9',
-    url='http://example.com/flask-restify/',
+    url='http://github.com/hrharkins/flask_restify/',
     license='BSD',
     author='Rich Harkins',
     author_email='rich.harkins+restify@gmail.com',
