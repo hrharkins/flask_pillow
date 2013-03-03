@@ -6,13 +6,10 @@ Accept-sensitive translation wrapper for Flask views.
 Why?
 ====
 
-Have you had instances where you wanted to adjust your representation
-based on the requested content type?  Typically, in Flask this amounts to
-an if-wrapper around the various representation generators.  However,
-in most cases this is largely boilerplate.  Ideeally, the controller
-function would return an entity and serializers would convert that to a
-string form (see RESTlet and Catalyst::Controller::REST for examples from
-other languages).
+Translating an entity to a representation is often boilerplate.  This
+module aims to remove that boilerplate by allowing view functions to simply
+return a generic entity and letting restify() figure out what sort of
+conversion function to call based on the Accept header.
 
 Simple Example
 ==============
