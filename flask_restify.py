@@ -128,6 +128,7 @@ class RESTify(object):
 
         app = flask.current_app
         override = flask.request.values.get('content-type')
+        override = override or flask.request.values.get('content_type')
         if override is not None:
             mimetypes = [override]
         else:
