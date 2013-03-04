@@ -8,7 +8,7 @@ from setuptools import setup
 
 setup(
     name='Flask-RESTify',
-    version='0.9',
+    version='0.9-001',
     url='http://github.com/hrharkins/flask_restify/',
     license='BSD',
     author='Rich Harkins',
