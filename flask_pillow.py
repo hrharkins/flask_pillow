@@ -239,7 +239,7 @@ def templatize(_entity, _template=None, _source=None, **_kw):
     elif _source is not None:
         return flask.render_template_string(_source, **_kw)
     else:
-        raise 'Either *_template or *_source must be set'
+        raise ValueError('Either *_template or *_source must be set')
 
 @Pillow.default_factory('json', 'text/json', 'application/json')
 def to_json(pillow, app, mimetypes, mimetype_override=None, **_kw):
