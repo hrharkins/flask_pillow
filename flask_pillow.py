@@ -153,18 +153,25 @@ class Pillow(object):
         override = flask.request.values.get('content-type')
         override = override or flask.request.values.get('content_type')
         config = app.config.get('PILLOW_CASES')
+        errors = {}
         if config is not None:
             if _name is not None:
                 _kw[_name] = entity
             for pattern in _cls.permute(request, type(entity), override):
                 handler = config.get(pattern)
                 if handler is not None:
-                    result = handler(entity, **_kw)
-                    if result is not _cls.CONTINUE:
-                        return result
+                    try:
+                        result = handler(entity, **_kw)
+                        if result is not _cls.CONTINUE:
+                            return result
+                    except Exception, e:
+                        errors[pattern] = e
             else:
                 if default is not None:
                     return default(entity, **_kw)
+        if errors:
+            for pattern, e in errors.iteritems():
+                raise e
         if override is None:
             mimetypes = [mimetype[0]
                          for mimetype in request.accept_mimetypes]
