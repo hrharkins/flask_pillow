@@ -1,6 +1,6 @@
 """
-Flask-RESTify
--------------
+Flask-Pillow
+------------
 
 This is the description for that library
 """
