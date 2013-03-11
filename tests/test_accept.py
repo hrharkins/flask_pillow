@@ -1,15 +1,14 @@
-import flask, unittest
-from flask_restify import RESTify
+import flask, unittest, flask_pillow
 
 class TestingBase(object):
     def setUp(self):
         app = self.app = flask.Flask(__name__)
-        rest = RESTify(app)
+        pillow = flask_pillow.Pillow(app)
         app.debug = True
         @app.route('/test1')
         def test1():
-            return rest.restify({'who': 'world'}, 'rest',
-                                html_source='Hello, {{ rest.who }}')
+            return flask_pillow.pillow(
+                {'who': 'world'}, 'rest', html_source='Hello, {{ rest.who }}')
 
 class TestAccept(TestingBase, unittest.TestCase):
     def test_accept(self):

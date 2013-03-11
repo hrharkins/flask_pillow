@@ -1,5 +1,5 @@
-flask_restify
-=============
+flask_pillow
+============
 
 Accept-sensitive translation wrapper for Flask views.
 
@@ -84,4 +84,15 @@ to the variable:
             return render_template_string(_source, **_kw)
         else:
             return entity
+
+Naming Note
+===========
+
+See http://dictionary.reference.com/browse/pillow, definition 5 as to the
+basis for the name.  :)
+
+Apologies to the other developer that had restify first.  I missed it in my
+initial scan, so I changed the name accordingly!  Sorry I didn't catch it
+up front!  :)
+
 

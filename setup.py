@@ -7,15 +7,15 @@ This is the description for that library
 from setuptools import setup
 
 setup(
-    name='Flask-RESTify',
-    version='0.9-001',
-    url='http://github.com/hrharkins/flask_restify/',
+    name='Flask-Pillow',
+    version='0.9-002',
+    url='http://github.com/hrharkins/flask_pillow/',
     license='BSD',
     author='Rich Harkins',
     author_email='rich.harkins+restify@gmail.com',
     description='Serializes view responses based on the Accept header',
     long_description=__doc__,
-    py_modules=['flask_restify'],
+    py_modules=['flask_pillow'],
     zip_safe=False,
     include_package_data=True,
     platforms='any',
