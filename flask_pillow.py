@@ -165,13 +165,13 @@ class Pillow(object):
                         if result is not _cls.CONTINUE:
                             return result
                     except Exception, e:
-                        errors[pattern] = e
+                        errors[pattern] = sys.exc_info()
             else:
                 if default is not None:
                     return default(entity, **_kw)
         if errors:
-            for pattern, e in errors.iteritems():
-                raise e
+            for pattern, exc_info in errors.iteritems():
+                raise exc_info
         if override is None:
             mimetypes = [mimetype[0]
                          for mimetype in request.accept_mimetypes]
