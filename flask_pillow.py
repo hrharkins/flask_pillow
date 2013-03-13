@@ -1,4 +1,4 @@
-import flask, json
+import flask, json, sys
 
 try:
     from flask import _app_ctx_stack as stack
