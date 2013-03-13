@@ -171,7 +171,7 @@ class Pillow(object):
                     return default(entity, **_kw)
         if errors:
             for pattern, exc_info in errors.iteritems():
-                raise exc_info[2]
+                raise exc_info[1], exc_info[2]
         if override is None:
             mimetypes = [mimetype[0]
                          for mimetype in request.accept_mimetypes]
