@@ -248,10 +248,13 @@ def templatize(_entity, _template=None, _source=None, **_kw):
     else:
         raise ValueError('Either *_template or *_source must be set')
 
+def json_dumps(*_args, **_kw):
+    return json.dumps(*_args, default=lambda o: o.to_json(), **_kw)
+
 @Pillow.default_factory('json', 'text/json', 'application/json')
 def to_json(pillow, app, mimetypes, mimetype_override=None, **_kw):
     mimetypes = mimetype_override or app.config.get('json-types', mimetypes)
-    pillow.case(json.dumps, *mimetypes, obj='?')
+    pillow.case(json_dumps, *mimetypes, obj='?')
 
 @Pillow.default_factory('yaml', 'text/yaml', 'application/yaml')
 def to_yaml(pillow, app, mimetypes, mimetype_override=None, **_kw):
